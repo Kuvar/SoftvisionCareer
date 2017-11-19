@@ -24,25 +24,21 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginSubmit(){
-    alert(this.password);
     const user = {
       email: this.email,
       password: this.password
     }
-    console.log(user);
     // Authenticate User
     this.authService.authenticateUser(user).subscribe(data => {
-    console.log(data);
-    if(data.success){
-      this.flashMessagesService.show('Something went wrong', { cssClass: 'alert-success', timeout: 3000 });
-      //this.router.navigate(['/profile']);
-      console.log('success');
-    } else {
-      //console.log('error');
-      this.password = "test";
-      this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
-      //this.router.navigate(['/login']);
-    }
+      if(data.success){
+        this.authService.storeUserData(data.token, data.user);
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.email = "";
+        this.password = "";
+        this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 5000 });
+        this.router.navigate(['login']);
+      }
     });
 
   }
