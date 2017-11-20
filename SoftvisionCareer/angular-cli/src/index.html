@@ -89,6 +89,8 @@
 <script src="dist/js/demo.js"></script>
 <!-- iCheck -->
 <script src="plugins/iCheck/icheck.min.js"></script>
+<script src="bower_components/ckeditor/ckeditor.js"></script>
+
 <script>
 $(function () {
   $('input').iCheck({
@@ -96,6 +98,11 @@ $(function () {
     radioClass: 'iradio_square-blue',
     increaseArea: '20%' // optional
   });
+
+  // Replace the <textarea id="editor1"> with a CKEditor
+  // instance, using default configuration.
+  CKEDITOR.replace('jobDescription')
+
 });
 </script>
 </body>

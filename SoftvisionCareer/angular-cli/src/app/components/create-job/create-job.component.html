@@ -1,0 +1,64 @@
+<app-appheader></app-appheader>
+<app-appmenu></app-appmenu>
+<div class="content-wrapper" style="min-height: 916px;">
+  <section class="content-header">
+    <h1>Dashboard<small>Control panel</small></h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+  </section>
+    <section class="content">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Create Job</h3>
+        </div>
+        <form>
+          <div class="box-body">
+                  <div class="form-group">
+                    <label for="jobTitle">Title</label>
+                    <input class="form-control" id="jobTitle" [(ngModel)]="jobTitle" name="jobTitle" placeholder="Title" type="text" required>
+                  </div>
+                  <div class="row">
+                  <div class="form-group col-sm-4">
+                    <label for="coreTechnology">Core Technology</label>
+                    <select class="form-control" name="multipleSelect" id="multipleSelect" [(ngModel)]="multipleSelect" multiple>
+                      <option value="Java">Java</option>
+                      <option value=".Net">.Net</option>
+                      <option value="Angular-2">Angular-2</option>
+                      <option value="Node">Node</option>
+                      <option value="TypeScript">TypeScript</option>
+                      <option value="Android">Android</option>
+                      <option value="Xamarin">Xamarin</option>
+                      </select><br>
+                      {{multipleSelect}}
+                  </div>
+                  <div class="form-group col-sm-4">
+                    <label for="jobPayroll">Payroll</label>
+                    <select class="form-control" [(ngModel)]="jobPayroll" name="jobPayroll">
+                      <option value="Permanent">Permanent</option>
+                      <option value="Temporary">Temporary</option>
+                      <option value="Contract">Contract</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-sm-4">
+                    <label for="NoFoOpening">No. fo Opening</label>
+                    <input id="NoFoOpening" type="number" class="form-control" [(ngModel)]="NoFoOpening" name="NoFoOpening" min="1" max="10">
+                  </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">Description</label>
+                    <textarea id="jobDescription" [(ngModel)]="jobDescription" value="1" name="jobDescription" rows="10" cols="80"></textarea>
+                    {{jobDescription}}
+                  </div>
+                </div>
+          <div class="box-footer">
+              <button type="submit" class="btn btn-default">Cancel</button>
+              <button type="submit" class="btn btn-info pull-right">Sign in</button>
+          </div>
+        </form>
+      </div>
+    </section>
+</div>
+<app-appfooter></app-appfooter>
+<app-appsettings></app-appsettings>

@@ -5,6 +5,7 @@ const config = require('../config/database');
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
+const Job = require('../models/job');
 
 //Register
 router.post('/register', (req, res, next) => {
@@ -67,7 +68,15 @@ router.get('/profile', passport.authenticate('jwt',{session:false}), (req, res, 
 
 //Profile
 router.get('/test', (req, res, next) => {
-    
+
+});
+
+// Get All Jobs
+router.get('/Jobs', passport.authenticate('jwt',{session:false}), (req, res, next) => {
+  Job.getAllJob((err, jobs) => {
+    if(err) throw err;
+    return res.json({success:true, jobs:jobs});
+  });
 });
 
 module.exports = router;

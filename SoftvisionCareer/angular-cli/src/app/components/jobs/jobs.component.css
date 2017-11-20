@@ -1,0 +1,20 @@
+.jobs .job-row{
+  height: 100px !important;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+}
+.jobs > .job-row:nth-child(even){
+  background-color: #23d88f;
+  border: #FFF 2px solid;
+}
+.jobs > .job-row:nth-child(odd){
+  background-color: #36bdff;
+  border: #FFF 2px solid;
+}
+.add-job{
+  
+}
+.add-job div{ padding-top: 2px;}
+.add-job i{ font-size: 24px; }
+.add-job a{color: #000000}
