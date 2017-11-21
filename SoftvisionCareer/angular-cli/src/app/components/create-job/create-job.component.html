@@ -13,48 +13,75 @@
         <div class="box-header with-border">
           <h3 class="box-title">Create Job</h3>
         </div>
-        <form>
+        <form (submit)="CreateJobClick()">
           <div class="box-body">
                   <div class="form-group">
                     <label for="jobTitle">Title</label>
                     <input class="form-control" id="jobTitle" [(ngModel)]="jobTitle" name="jobTitle" placeholder="Title" type="text" required>
                   </div>
                   <div class="row">
-                  <div class="form-group col-sm-4">
-                    <label for="coreTechnology">Core Technology</label>
-                    <select class="form-control" name="multipleSelect" id="multipleSelect" [(ngModel)]="multipleSelect" multiple>
+                  <div class="form-group col-sm-3">
+                    <label for="coreTechnology">Technology</label>
+                    <select class="multiselect-ui form-control" name="coreTechnology" id="coreTechnology" [(ngModel)]="coreTechnology" multiple="multiple">
+                      <option value="Agile">Agile</option>
                       <option value="Java">Java</option>
-                      <option value=".Net">.Net</option>
+                      <option value=".Net Desktop">.Net Desktop</option>
+                      <option value=".NET Web">.NET Web</option>
                       <option value="Angular-2">Angular-2</option>
                       <option value="Node">Node</option>
                       <option value="TypeScript">TypeScript</option>
-                      <option value="Android">Android</option>
+                      <option value="Android SDK">Android SDK</option>
                       <option value="Xamarin">Xamarin</option>
-                      </select><br>
-                      {{multipleSelect}}
+                      <option value="SCRUM">SCRUM</option>
+                      <option value="KANBAN">KANBAN</option>
+                      <option value="SQL">SQL</option>
+                      <option value="OpenFin">OpenFin</option>
+                      <option value="OOP">OOP</option>
+                      <option value="Development skills">Development skills</option>
+                      <option value="White & Gray box testing">White & Gray box testing</option>
+                    </select>
                   </div>
-                  <div class="form-group col-sm-4">
+                  <div class="form-group col-sm-3">
                     <label for="jobPayroll">Payroll</label>
                     <select class="form-control" [(ngModel)]="jobPayroll" name="jobPayroll">
-                      <option value="Permanent">Permanent</option>
+                      <option selected value="Permanent">Permanent</option>
                       <option value="Temporary">Temporary</option>
                       <option value="Contract">Contract</option>
                     </select>
                   </div>
-                  <div class="form-group col-sm-4">
-                    <label for="NoFoOpening">No. fo Opening</label>
-                    <input id="NoFoOpening" type="number" class="form-control" [(ngModel)]="NoFoOpening" name="NoFoOpening" min="1" max="10">
+                  <div class="form-group col-sm-3">
+                    <label for="NoOfOpening">No. fo Opening</label>
+                    <input id="NoOfOpening" type="number" class="form-control" [(ngModel)]="NoOfOpening" name="NoOfOpening" min="1" max="10">
+                  </div>
+                  <div class="form-group col-sm-3">
+                    <label for="jobLocation">job Location</label>
+                    <select class="form-control" [(ngModel)]="jobLocation" name="jobLocation">
+                      <option selected value="Atlanta">Atlanta</option>
+                      <option value="Austin">Austin</option>
+                      <option value="Australia">Australia</option>
+                      <option selected value="Bengaluru, India">Bengaluru, India</option>
+                      <option value="Brasil">Brasil</option>
+                      <option value="Bucharest, Romania">Bucharest, Romania</option>
+                      <option selected value="Cluj-Napoca, Romania">Cluj-Napoca, Romania</option>
+                      <option value="Las Vegas">Las Vegas</option>
+                      <option value="Mysore, India">Mysore, India</option>
+                      <option selected value="Nepal">Nepal</option>
+                      <option value="New York">New York</option>
+                      <option value="Oakland – HQ">Oakland – HQ</option>
+                      <option selected value="Philadelphia">Philadelphia</option>
+                      <option value="Singapore">Singapore</option>
+                      <option value="Vancouver">Vancouver</option>
+                    </select>
                   </div>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">Description</label>
-                    <textarea id="jobDescription" [(ngModel)]="jobDescription" value="1" name="jobDescription" rows="10" cols="80"></textarea>
-                    {{jobDescription}}
+                    <ck-editor name="editor1" [(ngModel)]="jobDescription" skin="moono-lisa" lang="en" [fullPage]="true"></ck-editor>
                   </div>
                 </div>
           <div class="box-footer">
-              <button type="submit" class="btn btn-default">Cancel</button>
-              <button type="submit" class="btn btn-info pull-right">Sign in</button>
+              <button type="button"  (click)="ClearCtrl()"  class="btn btn-default">Clear</button>
+              <button type="submit" class="btn btn-info pull-right">Create Job</button>
           </div>
         </form>
       </div>

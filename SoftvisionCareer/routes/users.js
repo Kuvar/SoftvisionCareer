@@ -79,4 +79,29 @@ router.get('/Jobs', passport.authenticate('jwt',{session:false}), (req, res, nex
   });
 });
 
+//Register
+router.post('/createjob', (req, res, next) => {
+
+    const newJob = new Job({
+      title: req.body.jobTitle,
+      description: req.body.jobDescription,
+      coreTechnology: req.body.coreTechnology,
+      payroll: req.body.jobPayroll,
+      location: req.body.jobLocation,
+      postedByEmail: req.body.email,
+      postedByName: req.body.name,
+      datePosted: req.body.datePosted,
+      numberOfOpening: req.body.NoOfOpening,
+      isActive: req.body.isActive
+    });
+
+    Job.createJob(newJob, (err,job)=>{
+        if(err){
+            res.json({success:false, msg:'Job creation failed'});
+        } else {
+            res.json({success:true, msg:'Job created successfully'});
+        }
+    });
+});
+
 module.exports = router;

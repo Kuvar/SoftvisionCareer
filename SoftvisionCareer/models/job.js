@@ -16,7 +16,7 @@ const JobSchema = mongoose.Schema({
     type:String,
     required: true
   },
-  position:{
+  payroll:{
     type:String,
     required: true
   },
@@ -65,4 +65,8 @@ module.exports.getJobByTechnology = function(technology, callback){
 module.exports.getAllJob = function(callback){
   const query = { isActive: '1' };
   Job.find(query, callback);
+}
+
+module.exports.createJob = function(newJob, callback){
+  newJob.save(callback); 
 }

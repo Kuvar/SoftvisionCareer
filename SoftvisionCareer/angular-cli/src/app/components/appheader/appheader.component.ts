@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./appheader.component.css']
 })
 export class AppheaderComponent implements OnInit {
-
+  name:String;
   constructor(
     private flashMessagesService: FlashMessagesService,
     private authService: AuthService,
@@ -17,6 +17,8 @@ export class AppheaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+     var objUser = JSON.parse(localStorage.getItem('user'));
+     this.name = objUser.name;
   }
 
   onLogoutClick(){

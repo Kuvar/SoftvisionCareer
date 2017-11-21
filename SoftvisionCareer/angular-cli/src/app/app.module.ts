@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router'
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { CKEditorModule } from 'ngx-ckeditor';
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -16,13 +19,14 @@ import { AppmenuComponent } from './components/appmenu/appmenu.component';
 import { AppheaderComponent } from './components/appheader/appheader.component';
 import { AppfooterComponent } from './components/appfooter/appfooter.component';
 import { AppmasterComponent } from './components/appmaster/appmaster.component';
+import { JobsComponent } from './components/jobs/jobs.component';
+import { CreateJobComponent } from './components/create-job/create-job.component';
+
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
-import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthGuard } from './guards/auth.guard';
-import { JobsComponent } from './components/jobs/jobs.component';
-import { CreateJobComponent } from './components/create-job/create-job.component';
+
 
 const appRoutes: Routes = [
   {path:'', component: LoginComponent},
@@ -56,7 +60,8 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FlashMessagesModule
+    FlashMessagesModule,
+    CKEditorModule
   ],
   providers: [ValidateService, AuthService, AuthGuard],
   bootstrap: [AppComponent]

@@ -56,4 +56,11 @@ user: any;
     .map(res => res.json());
   }
 
+  CreateJob(job){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/users/createjob', job,{headers: headers})
+    .map(res => res.json());
+  }
+
 }

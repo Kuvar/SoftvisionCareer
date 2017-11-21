@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./appmenu.component.css']
 })
 export class AppmenuComponent implements OnInit {
-
+name:String;
   constructor() { }
 
   ngOnInit() {
+    var objUser = JSON.parse(localStorage.getItem('user'));
+    this.name = objUser.name;
   }
 
 }
