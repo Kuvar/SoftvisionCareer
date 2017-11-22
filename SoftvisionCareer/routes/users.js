@@ -88,10 +88,10 @@ router.post('/createjob', (req, res, next) => {
       coreTechnology: req.body.coreTechnology,
       payroll: req.body.jobPayroll,
       location: req.body.jobLocation,
-      postedByEmail: req.body.email,
-      postedByName: req.body.name,
+      postedByEmail: req.body.postedByEmail,
+      postedByName: req.body.postedByName,
       datePosted: req.body.datePosted,
-      numberOfOpening: req.body.NoOfOpening,
+      numberOfOpening: req.body.numberOfOpening,
       isActive: req.body.isActive
     });
 

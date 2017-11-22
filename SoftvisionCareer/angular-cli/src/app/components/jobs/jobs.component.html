@@ -22,27 +22,16 @@
             <div class="pull-right"><a href="/createJob"><i class="fa fa-plus-square" aria-hidden="true"></i></a></div>
           </div>
         </div>
-      <!--<div class="row" *ngIf="jobs"><h1>No record found.</h1></div>-->
           <div class="box-body jobs">
-              <div class="col-md-12 job-row">
-                <div class="col-md-3">image</div>
-                <div class="col-md-9">
-                  <div class="col-md-12 job-title"></div>
-                  <div class="col-md-12 location"></div>
-                  <div class="col-md-12 read-more">Read more</div>
+            <div class="row" *ngIf="!jobs"><h1>No record found.</h1></div>
+              <div class="col-md-12 job-row" *ngFor="let job of jobs">
+                <div class="col-md-2 col-xs-2 job-img">image</div>
+                <div class="col-md-10 col-xs-10 job-content">
+                  <div class="col-md-12 col-xs-12 job-title">{{job.title}} - (<span *ngFor="let tech of job.coreTechnology; let isLast=last">{{tech}}{{isLast ? '' : ', '}}</span>)</div>
+                  <div class="col-md-12 col-xs-12 job-location">{{job.location}}</div>
+                  <div class="col-md-12 col-xs-12 job-read-more"> <a href="#">Read more</a></div>
                 </div>
               </div>
-              <div class="col-md-12 job-row">Emp-02</div>
-              <div class="col-md-12 job-row">Emp-03</div>
-              <div class="col-md-12 job-row">Emp-04</div>
-              <div class="col-md-12 job-row">Emp-05</div>
-              <div class="col-md-12 job-row">Emp-06</div>
-              <div class="col-md-12 job-row">Emp-07</div>
-              <div class="col-md-12 job-row">Emp-08</div>
-              <div class="col-md-12 job-row">Emp-09</div>
-              <div class="col-md-12 job-row">Emp-10</div>
-              <div class="col-md-12 job-row">Emp-11</div>
-              <div class="col-md-12 job-row">Emp-12</div>
           </div>
       </div>
     </section>

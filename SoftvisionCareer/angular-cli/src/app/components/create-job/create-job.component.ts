@@ -33,11 +33,11 @@ export class CreateJobComponent implements OnInit {
   CreateJobClick(){
     var objUser = JSON.parse(localStorage.getItem('user'));
     const job = {
-      title: this.jobTitle,
-      description: this.jobDescription,
+      jobTitle: this.jobTitle,
+      jobDescription: this.jobDescription,
       coreTechnology: this.coreTechnology,
-      payroll: this.jobPayroll,
-      location: this.jobLocation,
+      jobPayroll: this.jobPayroll,
+      jobLocation: this.jobLocation,
       postedByEmail: objUser.email,
       postedByName: objUser.name,
       datePosted: new Date().toLocaleDateString(),
@@ -47,13 +47,13 @@ export class CreateJobComponent implements OnInit {
 
     this.authService.CreateJob(job).subscribe(data => {
       if(data.success){
-        this.ClearCtrl();
         this.flashMessagesService.show(data.msg, { cssClass: 'alert-success', timeout: 5000 });
-        this.router.navigate(['createJob']);
+        this.ClearCtrl();
+        //this.router.navigate(['createJob']);
       } else {
         this.ClearCtrl();
         this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 5000 });
-        this.router.navigate(['createJob']);
+        //this.router.navigate(['createJob']);
       }
     });
   }

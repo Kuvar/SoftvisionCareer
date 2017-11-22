@@ -4,7 +4,9 @@ const bodyparser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
-const config = require('./config/database')
+const config = require('./config/database');
+const nodemailer = require('nodemailer');
+const xoauth2 = require('xoauth2');
 
 // Connect to database
 mongoose.connect(config.database);
@@ -51,6 +53,34 @@ app.get('/', (req,res) => {
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 })
+
+// create reusable transporter object using the default SMTP transport
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          xoauth2: xoauth2.createXOAuth2Generator({
+            user: account.user, // generated ethereal user
+            clientId: '547674249011-grt5m9kcpklkcl4e7k6877jlc0h5jol0.apps.googleusercontent.com'
+            clientSecret: 'uOuwHWgtz5QER78Q4w9rjWgw',
+            refreshToken: ''
+          })
+        }
+    });
+
+    var mailOptions = {
+      from: 'Kuvar <kstest1111@gmail.com>',
+      to: 'kuvarjava@gmail.com',
+      subject: 'Node Mailer Test',
+      text: 'Hello World!!'
+    };
+
+    transporter.sendMail(mailOptions, function(err, res){
+      if (err) {
+        console.log('Error');
+      } else {
+        console.log('Email Send');
+      }
+    });
 
 // Start Server
 app.listen(port, ()=>{

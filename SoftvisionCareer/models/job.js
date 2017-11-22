@@ -13,7 +13,7 @@ const JobSchema = mongoose.Schema({
     required: true
   },
   coreTechnology:{
-    type:String,
+    type:[{type: String}],
     required: true
   },
   payroll:{
@@ -68,5 +68,5 @@ module.exports.getAllJob = function(callback){
 }
 
 module.exports.createJob = function(newJob, callback){
-  newJob.save(callback); 
+  newJob.save(callback);
 }

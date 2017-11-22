@@ -22,6 +22,7 @@ export class JobsComponent implements OnInit {
   ngOnInit() {
     this.authService.getAllJob().subscribe( resulte => {
       this.jobs = resulte.jobs;
+      console.log("JOBS - " + JSON.stringify(this.jobs));
     }, err => {
       console.log(err);
       return false;
